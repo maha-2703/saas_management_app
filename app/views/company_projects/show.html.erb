@@ -1,0 +1,63 @@
+<%- model_class = CompanyProject -%>
+
+<div class="page-header">
+  <h3><%= @company_project.title %></h3>
+
+  <h5>
+    <small>
+      Organization -
+      <%= project_name(@company_project.project_id) %>
+    </small>
+  </h5>
+</div>
+
+<dl class="row">
+
+  <dt class="col-sm-2">
+    <%= model_class.human_attribute_name(:title) %>:
+  </dt>
+
+  
+  <dd class="col-sm-10">
+    <%= @company_project.title %>
+  </dd>
+
+  <dt class="col-sm-2">
+    <%= model_class.human_attribute_name(:details) %>:
+  </dt>
+
+  <dd class="col-sm-10">
+    <%= @company_project.details %>
+  </dd>
+
+  <dt class="col-sm-2">
+    <%= model_class.human_attribute_name(:expected_completion_date) %>:
+  </dt>
+
+  <dd class="col-sm-10">
+    <%= @company_project.expected_completion_date %>
+  </dd>
+
+  <dt class="col-sm-2">
+    <%= model_class.human_attribute_name(:project_id) %>:
+  </dt>
+
+  <dd class="col-sm-10">
+    <%= @company_project.project_id %>
+  </dd>
+
+</dl>
+
+<%= link_to "< Back to Organization Home",
+    root_path,
+    class: "btn btn-secondary" %>
+
+<%= link_to "Edit",
+    edit_company_project_path(@company_project),
+    class: "btn btn-secondary" %>
+
+<%= link_to "Destroy",
+    company_project_path(@company_project),
+    turbo_method: :delete,
+    data: { confirm: "Are you sure?" },
+    class: "btn btn-danger" %>

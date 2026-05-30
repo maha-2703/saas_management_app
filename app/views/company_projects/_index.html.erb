@@ -1,0 +1,101 @@
+
+<%- model_class = CompanyProject -%>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+  <h1>
+    Company Projects
+  </h1>
+
+  <% if @project.can_create_company_projects? %>
+
+    <%= link_to "New",
+        new_company_project_path,
+        class: "btn btn-primary" %>
+
+  <% end %>
+
+</div>
+
+<% if @company_projects.any? %>
+
+  <table class="table table-striped table-hover">
+
+    <thead class="table-dark">
+
+      <tr>
+
+        <th>Title</th>
+
+        <th>Details</th>
+
+        <th>Expected Completion Date</th>
+
+        <th>Actions</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <% @company_projects.each do |company_project| %>
+
+        <tr>
+
+          <!-- TITLE -->
+          <td>
+            <%= link_to company_project.title,
+                        company_project_path(company_project) %>
+          </td>
+
+          <!-- DETAILS -->
+          <td>
+            <%= company_project.details %>
+          </td>
+
+          <!-- DATE -->
+          <td>
+            <%= company_project.expected_completion_date %>
+          </td>
+
+          <!-- ACTION BUTTONS -->
+          <td>
+
+            <!-- SHOW -->
+            <%= link_to "Show",
+                        company_project_path(company_project),
+                        class: "btn btn-sm btn-outline-secondary" %>
+
+            <!-- EDIT -->
+            <%= link_to "Edit",
+                        edit_company_project_path(company_project),
+                        class: "btn btn-sm btn-outline-primary" %>
+
+            <!-- DELETE -->
+            <%= link_to "Delete",
+                        company_project_path(company_project),
+                        data: {
+                          turbo_method: :delete,
+                          turbo_confirm: "Are you sure?"
+                        },
+                        class: "btn btn-sm btn-outline-danger" %>
+
+          </td>
+
+        </tr>
+
+      <% end %>
+
+    </tbody>
+
+  </table>
+
+<% else %>
+
+  <p class="lead">
+    You don't have any projects
+  </p>
+
+<% end %>
+

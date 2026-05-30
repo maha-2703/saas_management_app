@@ -1,0 +1,38 @@
+<%= form_for @company_project, html: { class: "company_project" } do |f| %>
+
+  <% if @company_project.errors.any? %>
+    <div class="alert alert-danger">
+      <h5>
+        <%= pluralize(@company_project.errors.count, "error") %>
+        prohibited this company project from being saved:
+      </h5>
+
+      <ul>
+        <% @company_project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :title, class: "form-label" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :details, class: "form-label" %>
+    <%= f.text_field :details, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :expected_completion_date, class: "form-label" %>
+    <%= f.text_field :expected_completion_date, class: "form-control datepicker" %>
+  </div>
+
+  <%= f.hidden_field :project_id, value: @project.id %>
+  <div class="mb-3">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+
+<% end %>
