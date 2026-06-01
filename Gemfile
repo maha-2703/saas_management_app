@@ -12,6 +12,10 @@ gem 'dotenv-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'bootstrap-datepicker-rails'
+gem 'cloudinary'
+gem 'carrierwave', '~> 3.0'
+gem 'dotenv-rails'
+
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"

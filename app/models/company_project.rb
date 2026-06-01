@@ -1,6 +1,7 @@
 class CompanyProject < ApplicationRecord
 
   belongs_to :project
+  has_many :artifacts, dependent: :destroy
 
   validates_uniqueness_of :title
 

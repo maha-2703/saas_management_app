@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_29_160735) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_30_163600) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "artifacts", force: :cascade do |t|
+    t.bigint "company_project_id"
+    t.datetime "created_at", null: false
+    t.string "key"
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.index ["company_project_id"], name: "index_artifacts_on_company_project_id"
+  end
 
   create_table "company_projects", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -60,6 +69,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_29_160735) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "artifacts", "company_projects"
   add_foreign_key "company_projects", "projects"
   add_foreign_key "memberships", "projects"
   add_foreign_key "memberships", "users"

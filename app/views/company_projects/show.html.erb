@@ -61,3 +61,13 @@
     turbo_method: :delete,
     data: { confirm: "Are you sure?" },
     class: "btn btn-danger" %>
+
+  <h3>Uploaded Files</h3>
+
+
+      <%= link_to "Upload File",
+        new_artifact_path(company_project_id: @company_project.id),
+        class: "btn btn-primary mb-3" %>
+
+    <%= render 'artifacts/list',
+          artifacts: @company_project.artifacts %>

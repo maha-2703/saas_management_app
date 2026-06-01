@@ -32,4 +32,15 @@ module ApplicationHelper
     Project.find(project_id).name 
   end 
 
+  
+  def cloudinary_link(artifact)
+    return unless artifact.key.present?
+
+    link_to "Download",
+            artifact.key.url,
+            class: "btn btn-primary",
+            target: "_blank",
+            rel: "noopener"
+  end
+
 end
