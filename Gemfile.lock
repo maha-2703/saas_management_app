@@ -91,7 +91,7 @@ GEM
       msgpack (~> 1.2)
     bootstrap-datepicker-rails (1.10.0.1)
       railties (>= 3.0)
-    brakeman (8.0.4)
+    brakeman (8.0.5)
       racc
     builder (3.3.0)
     bundler-audit (0.9.3)
